@@ -12,3 +12,6 @@ db.json
 node_modules/
 public/
 .deploy*/
+
+#hexo files
+_drafts
