@@ -100,3 +100,12 @@ uglify:
   compress:
   exclude: 
     - '*.min.js'
+
+flowchart:
+  webfont: 'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js'
+  snap: 'https://cdn.bootcss.com/raphael/2.2.7/raphael.min.js'
+  underscore: 'https://cdn.bootcss.com/underscore.js/1.8.3/underscore-min.js'
+  sequence: 'https://cdn.bootcss.com/js-sequence-diagrams/1.0.6/sequence-diagram-min.js'
+  options: 
+    theme: 
+    css_class: 

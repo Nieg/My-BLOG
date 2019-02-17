@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "3.7.1"
+    "version": "3.8.0"
   },
   "scripts": {
     "start": "hexo clean & hexo g & hexo s --drafts",
@@ -19,7 +19,7 @@
     "gulp-imagemin": "^4.1.0",
     "gulp-pretty-data": "^0.1.2",
     "gulp-uglify": "^3.0.0",
-    "hexo": "^3.2.0",
+    "hexo": "^3.8.0",
     "hexo-deployer-git": "^0.3.1",
     "hexo-filter-flowchart": "^1.0.4",
     "hexo-filter-sequence": "^1.0.3",
