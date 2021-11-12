@@ -1,6 +1,8 @@
 var gulp = require('gulp');
 var cleanCSS = require('gulp-clean-css');
-var uglify = require('gulp-uglify');
+// var uglify = require('gulp-uglify');
+const terser = require('gulp-terser');
+
 var htmlmin = require('gulp-htmlmin');
 var htmlclean = require('gulp-htmlclean');
 var prettyData = require('gulp-pretty-data');
@@ -8,7 +10,7 @@ var prettyData = require('gulp-pretty-data');
 // 压缩css文件
 gulp.task('minify-css', function () {
     return gulp.src('./public/**/*.css')
-        .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe(cleanCSS({ compatibility: 'ie8' }))
         .pipe(gulp.dest('./public'));
 });
 
@@ -29,7 +31,8 @@ gulp.task('minify-html', function () {
 // 压缩js文件
 gulp.task('minify-js', function () {
     return gulp.src('./public/**/*.js')
-        .pipe(uglify())
+        .pipe(terser())
+        // .pipe(uglify())
         .pipe(gulp.dest('./public'));
 });
 
@@ -48,6 +51,6 @@ gulp.task('minify-xml', function () {
 });
 
 // 默认任务
-gulp.task('default', [
+gulp.task('default', gulp.series([
     'minify-html', 'minify-css', 'minify-js', 'minify-xml'
-]);
+]));
