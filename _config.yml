@@ -68,8 +68,12 @@ index_generator:
   order_by: -date
 
 # Category & Tag
-default_category: uncategorized
+default_category: posts
 category_map:
+  后端: backends
+  随笔: essays
+  c#: c-sharp
+  .net: dot-net
 tag_map:
 
 # Metadata elements
