@@ -179,7 +179,7 @@ site_state: true
 # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
 social:
   GitHub: https://github.com/Nieg/ || fab fa-github
-  E-Mail: mailto:xp_fei@163.com || fa fa-envelope
+  #E-Mail: mailto:xp_fei@163.com || fa fa-envelope
   #Weibo: https://weibo.com/yourname || fab fa-weibo
   #Google: https://plus.google.com/yourname || fab fa-google
   #Twitter: https://twitter.com/yourname || fab fa-twitter
@@ -812,10 +812,12 @@ pdf:
 
 # Mermaid tag
 mermaid:
-  enable: false
+  enable: true
   # Available themes: default | dark | forest | neutral
-  theme: forest
-
+  # theme: forest
+  theme:
+    light: default
+    dark: dark
 
 # ---------------------------------------------------------------
 # Animation Settings
