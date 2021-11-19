@@ -143,7 +143,7 @@ public class 登录信息
 
 ## 源码
 
-此文章所有代码都放在了我的 github 仓库 [Nieg/codedemo4blog](https://github.com/Nieg/codedemo4blog/gh-pages/codding-csharp-in-chinese/) 下。
+此文章所有代码都放在了我的 github 仓库 [Nieg/codedemo4blog](https://github.com/Nieg/codedemo4blog/tree/main/gh-pages/codding-csharp-in-chinese/) 下。
 
 
 
