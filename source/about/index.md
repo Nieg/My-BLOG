@@ -17,8 +17,8 @@ title:  关于我
  - 飞机/男/1990 
  - 本科/五山理工职业技术学院
  - 工作时间：2012年6月-至今
- - 技术博客：https://nieg.github.io 
- - Github: http://github.com/nieg
+ - 技术博客：[https://nieg.github.io/](https://nieg.github.io/)
+ - Github: [http://github.com/nieg/](https://nieg.github.io/)
  - 所在城市：广州
 
 ---
@@ -29,15 +29,18 @@ title:  关于我
 
 - Web开发：.Net(Framework/Core)/Nodejs
 - Web框架：.Net Mvc/WebForm/Nuxt
-- 前端框架：Bootstrap/Layui/Vue/ElementUI/Swagger
+- 编程语言: javascript/C#
+- 前端框架：Bootstrap/Layui/Vue/ElementUI
 - 后端组件：EF/Dapper/SqlSugar/Autofac/Log4net/Newtownsoft.Json/AutoMapper
 - 前端工具：Webpack/Gulp/SaSS/LeSS
 - 数据库相关：MySQL/SQL Server
-- 中间件: Redis/MangoDb/ElasticSearch
+- 中间件: Redis/MangoDb/ElasticSearch/ActiveMq/MinIO/pm2
 - 服务器: IIS/Nginx
-- 版本管理、文档和自动化部署工具：Svn/Git/ShowDocs/jenkins
+- 版本管理、文档和自动化部署工具：Svn/Git/gogs/Swagger/ShowDocs/jenkins
 - 单元测试：NUnit
 - 云和开放平台：Aliyun/腾讯云/阿里开发平台/微信应用开发
+- 命令行工具: putty/cmd
+- 奇怪工具：frp/gost/nssm/winsw/freefilesync/UltraVNC/Wireshark/Windbg
 
 ## 参考技能关键字
 
