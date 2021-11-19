@@ -3,7 +3,7 @@ layout: post
 title:  "重启博客计划"
 date:   2018-05-13 11:43:56 +0800
 tags: [helloworld]
-categories: posts
+categories: 随笔
 ---
 
 ## 摘要
