@@ -10,6 +10,7 @@ typora-root-url: ..
 如果大家想要用中文编码，第一个想到的是什么？ 易语言？ visual basic 的中文版。对于这种想法，我只能说，格局，
 ![格局小了](/images/meme/patterns/issmall2.jpg)
 现在这个年代，至少还是得玩点更高级的。就像知乎问答[《如何评价用汉字编写C#代码的公司？》](https://bbs.csdn.net/topics/380159364)那样。这个问答中的公司指的是N年前的CSDN神贴 [《跳槽误入一家用汉字编写C#代码的公司，望各位大师指点~》](https://bbs.csdn.net/topics/380159364)中的公司。
+<!-- more -->
 ![格局打开](/images/meme/patterns/open.jpg)
 ![CSDN-中文编程-疑问图](/images/posts/codding-csharp-in-chinese/coding-in-csharp-csdn-screenshot.jpg)
 
