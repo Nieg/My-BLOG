@@ -51,10 +51,10 @@ highlight:
   auto_detect: false
   tab_replace: ''
   wrap: true
-  hljs: false
+  hljs: true
 prismjs:
   enable: false
-  preprocess: true
+  preprocess: false
   line_number: true
   tab_replace: ''
 
@@ -71,7 +71,10 @@ index_generator:
 default_category: posts
 category_map:
   后端: backends
+  前端: frontends
   随笔: essays
+  基础: basis  
+  备忘: memos
   c#: c-sharp
   .net: dot-net
 tag_map:
