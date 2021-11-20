@@ -34,7 +34,7 @@ typora-root-url: ..
 
 * System.Linq 下基于IEnumerable [使用 yield 关键字返回数据的方案](https://referencesource.microsoft.com/#System.Core/System/Linq/Enumerable.cs)，远比文章中的叠代器实现得优雅和功能强大。
 
-但是既然已经接受了要用汉子搞事情的设定，还是开搞吧。
+但是既然已经接受了要用汉字搞事情的设定，还是开搞吧。
 ![challenge-accepted](/images/meme/fav/challenge-accepted.jpg)
 
 ## 实现

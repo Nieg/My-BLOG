@@ -2,7 +2,7 @@
 layout: post
 title:  "重启博客计划"
 date:   2018-05-13 11:43:56 +0800
-tags: [helloworld]
+tags: [helloworld, hexo, 碎碎念]
 categories: 随笔
 ---
 搭建完博客的第一件事，果然还是要得无病呻吟一番啊。
