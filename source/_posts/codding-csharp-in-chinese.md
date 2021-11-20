@@ -1,17 +1,17 @@
 ---
 title: "用汉字编写C#代码"
 date: 2021-11-18 16:04:29
-tags: [C#, Lambda表达式,基础,doge] 
+tags: [C#, Lambda表达式, 基础, doge] 
 categories: 后端
 typora-root-url: ..
 ---
-## 引子
 知乎对于我们这些网上冲浪的选手来说，真的是个快乐源泉。
-如果大家想要用中文编码，第一个想到的是什么？ 易语言？ visual basic 的中文版。对于这种想法，我只能说，格局，
-![格局小了](/images/meme/patterns/issmall2.jpg)
-现在这个年代，至少还是得玩点更高级的。就像知乎问答[《如何评价用汉字编写C#代码的公司？》](https://bbs.csdn.net/topics/380159364)那样。这个问答中的公司指的是N年前的CSDN神贴 [《跳槽误入一家用汉字编写C#代码的公司，望各位大师指点~》](https://bbs.csdn.net/topics/380159364)中的公司。
+如果大家想要用中文编码，第一个想到的是什么？ 易语言？ visual basic 的中文版。对于这种想法，我只能说，格局，格局小了。
+![格局小了](/images/meme/patterns/tinyone.jpg)
 <!-- more -->
+现在这个年代，至少还是得玩点更高级的。就像知乎问答[《如何评价用汉字编写C#代码的公司？》](https://bbs.csdn.net/topics/380159364)那样。这个问答中的公司指的是N年前的CSDN神贴 [《跳槽误入一家用汉字编写C#代码的公司，望各位大师指点~》](https://bbs.csdn.net/topics/380159364)中的公司。
 ![格局打开](/images/meme/patterns/open.jpg)
+## 万恶之源
 ![CSDN-中文编程-疑问图](/images/posts/codding-csharp-in-chinese/coding-in-csharp-csdn-screenshot.jpg)
 
 ## 开干
@@ -56,7 +56,6 @@ public static explicit operator 整型(长整型 值);
 整型 整值1=1235; //int intVal1=123;
 长整型 长整值1=整值1; //long longVal1=intVal1;
 整型 整值2=(整型)长整值1; int intVal2=(int)longVal1;
-
 ```
 
 然后是判断和异常的重写，实现的 if else if，try catch finally 结构
@@ -86,13 +85,9 @@ public static explicit operator 整型(长整型 值);
 public class 登录信息
 {
     public 字符串 姓名 { get; set; }
-
     public 布尔 是有效用户 { get; set; }
-
     public 整型 总工作年限 { get; set; }
-
     public 整型 总获奖次数 { get; set; }
-
     public override string ToString()
     {
         return $"姓名[{姓名}],有效[{是有效用户}],工作年限[{总工作年限}],获奖次数[{总获奖次数}]";

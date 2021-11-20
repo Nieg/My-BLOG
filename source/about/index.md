@@ -17,8 +17,8 @@ title:  关于我
  - 飞机/男/1990 
  - 本科/五山理工职业技术学院
  - 工作时间：2012年6月-至今
- - 技术博客：[https://nieg.github.io/](https://nieg.github.io/)
- - Github: [https://github.com/nieg/](https://github.com/nieg/)
+ - 技术博客：<a href="https://nieg.github.io" target="_blank" rel="noopener">https://nieg.github.io</a>
+ - Github: <a href="https://github.com/nieg/" target="_blank" rel="noopener">https://github.com/nieg/</a>
  - 所在城市：广州
 
 ---
@@ -42,6 +42,9 @@ title:  关于我
 - 命令行工具: putty/cmd
 - 奇怪工具：frp/gost/nssm/winsw/freefilesync/UltraVNC/Wireshark/Windbg
 
+
+---
+
 ## 参考技能关键字
 
 - .Net 
@@ -55,7 +58,12 @@ title:  关于我
 - Nodejs
 - jquery
 
+
 ---
 
+## 个人参与的项目
+- 博客的配套代码: <a href="https://github.com/nieg/codedemo4blog/" target="_blank" rel="noopener">Nieg/codedemo4blog/</a>
+
+---
 
 -EOF-
