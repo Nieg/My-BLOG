@@ -21,17 +21,16 @@ typora-root-url: ..
 先根据帖子整理下需求点：
 
 * “用汉字”
-* “不光是类，还有关键字也进行了中文化。”
+* “不光是类，还有关键字也进行了中文化”
 * “全部用Lambda实现”
-* “而他们的官方解释有二（一、文章统一都是汉字；二、c#的关键字效率低，他们有更好的方式)”
+* “文章统一都是汉字”
+* “c#的关键字效率低，他们有更好的方式”
 
 除了最后的 “更好的方式” 我觉得不太可能实现外。大部分也有比较容易实现的思路。
-为什么不太可能实现
 
+为什么不太可能实现:
 * 重写关键字本身是吃力不讨好的，为了编码方便，你得做对新关键字和对应的类型做转换包括隐式和显式。
-
 * 自己定义的struct包裹了原来的类型更耗性能。
-
 * System.Linq 下基于IEnumerable [使用 yield 关键字返回数据的方案](https://referencesource.microsoft.com/#System.Core/System/Linq/Enumerable.cs)，远比文章中的叠代器实现得优雅和功能强大。
 
 但是既然已经接受了要用汉字搞事情的设定，还是开搞吧。
@@ -53,12 +52,12 @@ public static implicit operator 长整型(整型 值);
 public static explicit operator 整型(长整型 值);
 
 //上述代码实现后，可以让以下代码成立：
-整型 整值1=1235; //int intVal1=123;
-长整型 长整值1=整值1; //long longVal1=intVal1;
-整型 整值2=(整型)长整值1; int intVal2=(int)longVal1;
+整型 整值1=1234;            //int intVal1=123;
+长整型 长整值1=整值1;       //long longVal1=intVal1;
+整型 整值2=(整型)长整值1;   //int intVal2=(int)longVal1;
 ```
 
-然后是判断和异常的重写，实现的 if else if，try catch finally 结构
+然后是判断和异常的重写，实现的 if/else if/else，try catch finally 结构
 
 ```c#
 异常.对以下语句进行异常检测(() =>
@@ -111,7 +110,8 @@ public class 登录信息
             控制台.输出字符串("要加把劲了。");            
         });                    
         控制台.输出字符串("尝试计算获奖一次大概花了多少年。");
-        整型 平均时间 = 登陆信息.总工作年限 / 登陆信息.总获奖次数;
+        整型 平均年数 = 登陆信息.总工作年限 / 登陆信息.总获奖次数;
+        控制台.输出字符串("大概需要{0}年", 平均年数);
         
     }).发现异常则<被除零异常>(异常 =>
     {
@@ -140,7 +140,6 @@ public class 登录信息
 ## 源码
 
 此文章所有代码都放在了我的 github 仓库 [Nieg/codedemo4blog](https://github.com/Nieg/codedemo4blog/tree/main/gh-pages/codding-csharp-in-chinese/) 下。
-
 
 
 -EOF-
