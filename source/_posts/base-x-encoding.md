@@ -52,7 +52,7 @@ typora-root-url: ..
 
 ### base 16
 
-大家做 MD5/SHA-1 哈希 的时候，经过经常看到 这个 `e10adc3949ba59abbe56e057f20f883e` 。需要 16个字符容量，刚好**4bit 一组**， 2个字符表示1 byte 数据。实现难度最低，性能最高，**大小写不敏感**。
+大家做 MD5/SHA-1 哈希 的时候，经过经常看到 这个 `e10adc3949ba59abbe56e057f20f883e` 。需要 16个字符容量，刚好**4bit 一组**， 2个字符表示1 byte 数据。实现难度最低，性能最高，**大小写不敏感**。但因为 字符容量相对下面的介绍的各个编码方式来说，最小。所以生成的目标字符串长度最长，最碍地方。
 
 **字符表**：`0-15` : `0123456789ABCDEF`
 
@@ -93,41 +93,45 @@ private static string BitConvert(ICollection<byte> bytes, int format)
 
 
 ### base 62
-<a href="https://en.wikipedia.org/wiki/Base62" target="_blank" rel="noopenner">WIKI百科介绍</a>
-**大小写敏感**，把26个字母大小写全用上了。一起上。
+详情可以看看 <a href="https://en.wikipedia.org/wiki/Base62" target="_blank" rel="noopenner">WIKI百科的介绍</a>
+**大小写敏感**，把数字和26个字母大小写全用上了。一起上。
 **字符表**：`0-61` : `0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz`
+
+这个在项目实践中，会比 官方 提供的默认编码工具 base64 更好用。可以看 base 64 的说明，有原因。
+
+但貌似目前并没有一个完整的算法标准。
 
 目前我项目中使用的 base 62 的编码的实现是由 Github 网友 renmengye 实现的 <a href="https://github.com/renmengye/base62-csharp" target="_blank" rel="noopener">renmengye/base62-csharp</a>。
 
-这个在项目实践中，会比 官方 提供的默认编码工具 base64 更好用。
+后续我有时间，有必要的时候，可能会
 
 
 
 ### base 64
 
-很明显，是在 base 62的降低实现难度采用的一个权衡选择。因为 62 离 64 只差2个字符。 加上这两个字符，可以变为 **6 bit 一组**实现。实现难度要低得多。
+很明显，是在 base 62的降低实现难度采用的一个权衡选择。因为 62 离 64 只差2个字符。 加上这两个字符，可以变为**6 bit 一组**实现。实现难度要低得多。
 
 标准的 base 64 编码标准，在最后位数不足的时候，会用`=`号来补位。
 
 **字符表**：`0-63` : `0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+/` 
 
-**注**：在 使用 base 64 编码的时候作为URL参数的时候，+号 在 火狐上可能会被传值为 空格。 在后端获取到数据时需要特殊处理。
+**注**：在 使用 base 64 编码的时候作为URL参数的时候，`+`号 在 火狐上会被传值为空格。 在后端获取到数据时需要特殊处理。反正就是把目标是base64字符串的值替换 空格为 `+` 号保证正常使用就是了。
 
 
 
 ### base 58
-在 base 62 下，去除了4个容易混淆的字符(0,I,O,o)。方便使用者阅读，剔除歧义。然而，阅读本身**并没有**什么意义。
+在 base 62 下，去除了4个容易混淆的字符(0OIl)。方便使用者用眼观看，剔除歧义。然而，用眼观看本身**并没有**多大意义。这些字符倒是可以用来做验证码识别用。
 
-**字符表**：`0-57` : `0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz`
+**字符表**：`0-57` : `123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz`
 
 
 
 
 ### base 其他
 
-目前知道的，有 **base85**，**base91**，**base92**，**base94**
+刚刚搜索了下，有 **base85**，**base91**，**base92**，**base94**。
 
-几乎把ASCII 码能用上的都拿来做字符表了，作者怕是个狠人,这种一般不用来做数据数据表示。可能会做为补丁、特殊数据交换之类的。我自己也没太了解，估计后续也不太可能用上，就不深究了。
+这些编码方式，几乎把ASCII 码能用上的都拿来做字符表了，作者怕是个狠人。这种一般不用来做数据数据表示。可能会做为补丁、特殊数据交换协议之类的。我自己也没太了解，估计后续的职业生涯也不太可能用上，了解的意义不大，就不深究了。
 
 
 
