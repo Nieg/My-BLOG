@@ -29,14 +29,14 @@ title:  关于我
 
 - Web开发：.Net(Framework/Core)/Nodejs
 - Web框架：.Net Mvc/WebForm
-- 编程语言: javascript/C#
+- 编程语言: C#/javascript
 - 前端框架：Bootstrap/Layui/Vue/ElementUI
-- 后端组件：EF/Dapper/SqlSugar/Autofac/Log4net/Newtownsoft.Json/AutoMapper
+- 后端组件：Dapper/EF/SqlSugar/Autofac/Log4net/Serilog/Newtownsoft.Json/AutoMapper
 - 前端工具：Webpack/Gulp/SaSS/LeSS
 - 数据库相关：MySQL/SQL Server
 - 中间件: Redis/MangoDb/ElasticSearch/ActiveMq/MinIO/pm2
 - 服务器: IIS/Nginx
-- 版本管理、文档和自动化部署工具：Svn/Git/gogs/Swagger/ShowDocs/jenkins
+- 版本管理、文档和自动化部署工具：Svn/Git/gogs/Swagger/ShowDocs/jenkins/docker
 - 单元测试：NUnit
 - 云和开放平台：Aliyun/腾讯云/阿里开发平台/微信应用开发
 - 命令行工具: putty/cmd
