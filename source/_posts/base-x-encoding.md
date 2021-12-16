@@ -6,7 +6,7 @@ tags: [C#, encoding, 基础]
 typora-root-url: ..
 ---
 
-大家都知道的，计算机相关学科，在存储数据的时候，每个存储单元的值是由0和1组成的。因为在实现的时候，只要通过记录两个状态就可以了。而这存储单元，我们取名为bit。1 bit有两个值0和1，同样的1 byte有8个bit，2^8=256，也就可以表示256个值了。这些值的排列组合，就可以对不一样的物品，例如图案、符号，人员等大千世界的所有东西进行编号。9527 大家都认识。而基于特定的编号标准对我们人类历史的这样语言文字符号进行编号，一一对应之后，就是所谓的编码。
+计算机相关学科，在存储信息时，最小的单位可表示两个值（0和1）。因为在技术实现的时候，只需要用两个状态（高电位和低电位）就可以实现。这个存储单元，我们会用单位 bit 来表示。而在存储数据的时候，一般会用连续的 8 个存储单位，作为存储的数据单元，也就是 byte。1 bit有两个值（0和1），1 byte 有8个bit， 组成 1 byte 的 8 bit 各自能表示的值的排列组合，就有2^8可能性，也就可以表示256个值了。仅靠256个值是没多大用处的，但有1 byte 就有千千万万byte，只要想办法做规则让这些值跟我们所熟知的事物做一一对应的联系，我们就可以对大千世界的所有东西，例如图案、符号，人物等进行编号。我跟大家说9527，可能大家脑子也马上出现画面了吧。而用基于特定的编号标准对我们人类的文字符号、表情符号进行编号，一一对应之后，就是所谓的编码。
 
 以上就是我关于编码的理解。
 
@@ -16,21 +16,21 @@ typora-root-url: ..
 
 国际上，计算机可以表示的字符会有一个唯一的编号，我们称之为 Unicode。而对 Unicode 有很多的解释标准，就是所谓的字符的编码，例如最基础的 ASCII、我们国标的 GB2312、最常用的UTF-8等。这些不同的编码方案也会有很多相似之处（例如几乎所有编码在最开始段都是跟ASCII码兼容的，多余的那些知识我就不在这讨论了）。
 
-但很多时候，我们拥有的数据本身，可能没多大意义。有时候我们会有连续的一大片数据，这些数据可能没有在那些标准编码标准中有对应的字符的，如果在程序中，例如 C# 对这些值强行解释为 UTF8，可能就只会得到些问号"?"。例如我们做加密、哈希等对数据打乱后，失去原本的意义的数据。我们要精简的显示， 而不是 `01000110 01110101 01100011 01101011 00100000 01010101` 地显示的话，有什么办法呢？
+但很多时候，我们拥有的数据本身，可能没多大意义。有时候我们会有连续的一大片数据，这些数据可能没有在那些标准编码标准中有对应的字符的，如果在程序中，例如 C# 对这些值强行解释为 UTF8，可能就只会得到些问号"`?`"。例如我们做加密、哈希等操作后得到的那些数据，他们失去了最开始的模样，也失去原本的意义。我们要精简的显示， 而不是 `01000110 01110101 01100011 01101011 00100000 01010101` 地显示的话，有什么办法呢？
 
-扯了这么久，终于要扯到正题上了。我们要讨论的就是这些乱值的表示方法。
+扯了这么久，终于要扯到正题上了。我们要讨论的，就是这些乱值的表示方法。
 
 ## 常见base
 
-国际惯例，数据大多都是以 1 byte (8 bit) 为单位传输修改的。为了直观表示这些数据，大家有好几个比较常选择的方案。
-
 **首先 1 byte 可以表示的数据范围**是 `00000000` 到 `11111111`。
+
+国际惯例，数据大多都是以 1 byte (8 bit) 为单位传输和存储的。为了直观表示这些数据，大家有好几个比较常选择的方案。
 
 ### 实现方案的考量
 
 在**容易实现为主要考量**的话，大多会采用 2^n 次方(n 取 8 的 约数 最佳)个符号来表示上面的数据。这个n相当于把 n bit 一组统一一起表示数据。举个例子，上面的 1 byte 数据，可以 2 bit 一组，考虑 用 0, 1, 2, 3 四个字符来表示。那么这2 bit可以表示为：`00->0`， `01->1`，`10->2`，`11->3`。1 byte的数据 按 2 bit 一组的方案表示，从 `00 00 00 00 00 - 11 11 11 11` 改为 `0000 - 3333`。 也就直观多了。
 
-在**让新的表示字符串尽量短为主要考量**的话，大多会采用尽量多的字符来表示数据。 例如 0,1,2,3 就比 0,1 容量大。为了加大容量，可以增加字符数，至于怎么选字符就是你自己做决定了。现有的标准，大多都会选择 简单的 ascii 字母数字来作为容量。 因为 这些数字、字母等，在大多数的字符串编码中，本身只需要 1byte的数据量。其它的，你采用 甲,乙,丙,丁来作为 2bit 一组的表示形式也没有问题(从`00 00 00 00 00 - 11 11 11 11` 改为 `甲甲甲甲 - 丁丁丁丁`) 。但在大部分操作系统都默认采用 UTF-8 编码的情况下，你所需要的 内存空间 就是 0,1,2,3 的两倍。但实际上，上面甲乙丙丁的玩法，也等价于先用0,1,2,3表示后，再用甲乙丙丁替换掉。
+在**让新的表示字符串尽量短为主要考量**的话，大多会采用尽量多的字符来表示数据。 例如 0,1,2,3 就比 0,1 容量大。为了加大容量，可以增加字符数，至于怎么选字符就是你自己做决定了。现有的标准，大多都会选择 简单的 ascii 字母数字来作为容量。 因为 这些数字、字母等，在大多数的字符串编码中，本身只需要 1byte的数据量。其它的，你采用` 甲乙丙丁`来作为 2bit 一组的表示形式也没有问题(从`00 00 00 00 00 - 11 11 11 11` 改为 `甲甲甲甲 - 丁丁丁丁`) 。但在大部分操作系统都默认采用 UTF-8 编码的情况下，你所需要的 内存空间 就是 `0123` 的两倍。但实际上，上面甲乙丙丁的玩法，也等价于先用`0123`表示后，再用`甲乙丙丁`替换掉。
 
 但采用的字符数量多了，也会导致繁乱的事情发生，就需要做**特殊策略**来表示数据了。这种得分两种情况来讨论，一种是能够 n bit 一组 表示数据，但 n 不是 8 的约数的情况(例如 3 bit)，另外一种就是最特殊的情况，新的字符容量比较奇怪(例如容量为5，0、1、2、3、4)的时候。不能够刚好地 n bit 一组来表示 1 byte 的数据。
 
@@ -52,28 +52,62 @@ typora-root-url: ..
 
 ### base 16
 
-大家做 MD5/SHA-1 哈希 的时候，经过经常看到 这个 `e10adc3949ba59abbe56e057f20f883e` 。需要 16个字符容量，刚好**4bit 一组**， 2个字符表示1 byte 数据。实现难度最低，性能最高，**大小写不敏感**。但因为 字符容量相对下面的介绍的各个编码方式来说，最小。所以生成的目标字符串长度最长，最碍地方。
+大家做 MD5/SHA-1 哈希 的时候，经过经常看到 这个 `e10adc3949ba59abbe56e057f20f883e` 。需要 16个字符容量，刚好**4bit 一组**， 2个字符表示1 byte 数据。实现难度最低，性能最高，**大小写不敏感**。但因为 字符容量相对下面的介绍的各个编码方式来说，最小。所以生成的目标字符串长度最长，最碍地方,1 byte 的数据需要 2 byte的数据来存。
 
 **字符表**：`0-15` : `0123456789ABCDEF`
 
 下面给一个简单的实现：
 
 ```c#
-public const int BASE16_L = 0x1;
-private static readonly char[] _lowerChars = "0123456789abcdef".ToCharArray();
-public const int BASE16_U = 0x2;
-private static readonly char[] _upperChars = "0123456789ABCDEF".ToCharArray();
-private static string BitConvert(ICollection<byte> bytes, int format)
-{
-    char[] currChars = format == BASE16_U ? _upperChars : _lowerChars;
-    var sb = new StringBuilder(bytes.Count * 2);
-    foreach (byte b in bytes)
+    public class Base16Converter 
     {
-        sb.Append(currChars[b >> 4]);
-        sb.Append(currChars[b & 0xF]);
+        private static readonly char[] _characterSet = "0123456789ABCDEF".ToCharArray();
+
+        public byte[] Decode(string input)
+        {
+            if (string.IsNullOrEmpty(input)) return new byte[0];
+            if (input.Length % 2 > 0)
+                throw new ArgumentException(nameof(input));
+
+            //[0,9] [A,F]
+            //[48, 57], [65, 70]
+            byte[] result = new byte[input.Length / 2];
+            for (var i = 0; i < result.Length; i += 1)
+            {
+                int mark = 0;
+                result[i] = 0;
+
+            ENTRANCE: 
+                int valC = input[2 * i + mark];
+                if (valC > 47 && valC < 58)
+                    valC -= 48;
+                else if (valC > 64 && valC < 71)
+                    valC -= 55;
+                else
+                    throw new ArgumentException(nameof(input));
+
+                result[i] = (byte)((result[i] << 4) | (byte)valC);
+
+                if (mark == 0)
+                {
+                    mark = 1;
+                    goto ENTRANCE;
+                }
+            }
+            return result;
+        }
+
+        public string Encode(byte[] bytes)
+        {
+            var sb = new StringBuilder(bytes.Length * 2);
+            foreach (byte b in bytes)
+            {
+                sb.Append(_characterSet[b >> 4]);
+                sb.Append(_characterSet[b & 0xF]);
+            }
+            return sb.ToString();
+        }
     }
-    return sb.ToString();
-}
 ```
 
 
@@ -86,7 +120,7 @@ private static string BitConvert(ICollection<byte> bytes, int format)
 
 
 ### base 32
-**大小写不敏感**，很明显，是在 base 36的降低实现难度采用的一个权衡选择。 字母只使用 a-v共 22 个 字母。去掉那四个字母后，改为 **5bit 一组** 实现编码。
+**大小写不敏感**，很明显，是在 base 36的降低实现难度采用的一个权衡选择。 字母只使用 a-v共 22 个 字母。去掉那四个字母后，改为 **5bit 一组** 实现编码。5byte可以表示3byte的数据。
 
 **字符表**：`0-31` : `0123456789ABCDEFGHIJKLMNOPQRSTUV`
 
@@ -103,7 +137,7 @@ private static string BitConvert(ICollection<byte> bytes, int format)
 
 目前我项目中使用的 base 62 的编码的实现是由 Github 网友 renmengye 实现的 <a href="https://github.com/renmengye/base62-csharp" target="_blank" rel="noopener">renmengye/base62-csharp</a>。
 
-后续我有时间，有必要的时候，可能会
+后续我有时间，有必要的时候，可能会自己实现一个。
 
 
 
@@ -111,7 +145,7 @@ private static string BitConvert(ICollection<byte> bytes, int format)
 
 很明显，是在 base 62的降低实现难度采用的一个权衡选择。因为 62 离 64 只差2个字符。 加上这两个字符，可以变为**6 bit 一组**实现。实现难度要低得多。
 
-标准的 base 64 编码标准，在最后位数不足的时候，会用`=`号来补位。
+标准的 base 64 编码标准，在最后位数不足的时候，会用`=`号来补位。4 byte 可以表示 3byte的数据。
 
 **字符表**：`0-63` : `0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+/` 
 
