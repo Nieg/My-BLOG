@@ -10,7 +10,7 @@
     "draft": "hexo server --draft "
   },
   "hexo": {
-    "version": "5.4.0"
+    "version": "5.4.2"
   },
   "dependencies": {
     "gulp": "^4.0.2",
