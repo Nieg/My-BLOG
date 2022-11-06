@@ -46,9 +46,8 @@ nexT 皮肤的应用方面，是我写这篇文章的重要原因之一。**网�
 
 这样的好处是方便后续的皮肤更新，减少自己的配置与皮肤的源码的冲突。如果操作了步骤2，还可以把皮肤纳入自己的管理下。
 
-
-## 工具 Typora
-
+## 工具 Typora(已弃用)
+**工具已更换到 hexoEditor，请看下一章，更换原因，Typora正版收费了，破解非常简单，但这是不对的。**
 工欲善其事必先利其器，博客弄好后，就要考虑可视化编辑，所见即所得的了。我暂时觉得编辑这个的最好用的工具是 **Typora**。
 1. 写文章时，用 Typora打开 博客的 **source**目录。
 2. 视图->显示侧边栏，视图->文件树。 可以让编辑时有完整的目录可以看。
@@ -57,6 +56,11 @@ nexT 皮肤的应用方面，是我写这篇文章的重要原因之一。**网�
 4. 文件->偏好设置->图像 ，勾上 对本地位置图片应用上述规则、优先使用相对路径。 
  ![偏好设置](/images/posts/rise-of-the-blog-of-mine/Typora-setting-4.jpg)
 
+## 新工具 HexoEditor 
+我也是毒奶奶满，刚推荐  Typora 作为 可见即所得的编辑工具之后，Typora 马上更改了商业模式，开始恰饭了。我找了一段时间，所有和Markdown相关的工具都换掉了。目前写作工具是 HexoEditor， markdown主要用 Joplin。
+hexoEditor对hexo和next主题制度非常好。
+配置项只有：
+![配置项](/images/posts/rise-of-the-blog-of-mine/hexoEditor-setting.png)
 
 ## 总结汇总
 
