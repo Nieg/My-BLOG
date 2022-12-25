@@ -45,7 +45,6 @@ typora-root-url: ..
 
 
 
-
 ## 常见的编码方案
 根据上面的考虑，目前国际标准，比较常用的 base x 算法一般就是下面几个。我们可以揣摩一下 对应 `x`被选择原因。
 ![表示方法](/images/posts/base-x-encoding/base-x-list.jpg)
@@ -59,55 +58,55 @@ typora-root-url: ..
 下面给一个简单的实现：
 
 ```c#
-    public class Base16Converter 
+private static readonly char[] _characterSet = "0123456789ABCDEF".ToCharArray();
+
+public byte[] Decode(string input)
+{
+    if (string.IsNullOrEmpty(input)) return new byte[0];
+    if (input.Length % 2 > 0)
+        throw new ArgumentException(nameof(input));
+
+    //[0,9] [A,F]
+    //[48, 57]  [65, 70]
+    byte[] result = new byte[input.Length / 2];
+    for (var i = 0; i < result.Length; i += 1)
     {
-        private static readonly char[] _characterSet = "0123456789ABCDEF".ToCharArray();
+        int mark = 0;
+        result[i] = 0;
 
-        public byte[] Decode(string input)
+    ENTRANCE:
+
+        int valC = input[2 * i + mark];
+
+        if (valC > 47 && valC < 58)
+            valC -= 48;
+        else if (valC > 64 && valC < 71)
+            valC -= 55;
+        else
+            throw new ArgumentException(nameof(input));
+
+        result[i] <<= 4;
+        result[i] |= (byte)valC;
+
+        if (mark == 0)
         {
-            if (string.IsNullOrEmpty(input)) return new byte[0];
-            if (input.Length % 2 > 0)
-                throw new ArgumentException(nameof(input));
-
-            //[0,9] [A,F]
-            //[48, 57], [65, 70]
-            byte[] result = new byte[input.Length / 2];
-            for (var i = 0; i < result.Length; i += 1)
-            {
-                int mark = 0;
-                result[i] = 0;
-
-            ENTRANCE: 
-                int valC = input[2 * i + mark];
-                if (valC > 47 && valC < 58)
-                    valC -= 48;
-                else if (valC > 64 && valC < 71)
-                    valC -= 55;
-                else
-                    throw new ArgumentException(nameof(input));
-
-                result[i] = (byte)((result[i] << 4) | (byte)valC);
-
-                if (mark == 0)
-                {
-                    mark = 1;
-                    goto ENTRANCE;
-                }
-            }
-            return result;
-        }
-
-        public string Encode(byte[] bytes)
-        {
-            var sb = new StringBuilder(bytes.Length * 2);
-            foreach (byte b in bytes)
-            {
-                sb.Append(_characterSet[b >> 4]);
-                sb.Append(_characterSet[b & 0xF]);
-            }
-            return sb.ToString();
+            mark = 1;
+            goto ENTRANCE;
         }
     }
+    return result;
+}
+
+public string Encode(byte[] bytes)
+{
+    var sb = new StringBuilder(bytes.Length * 2);
+    foreach (byte b in bytes)
+    {
+        sb.Append(_characterSet[b >> 4]);
+        sb.Append(_characterSet[b & 0xF]);
+    }
+    return sb.ToString();
+}
 ```
 
 
